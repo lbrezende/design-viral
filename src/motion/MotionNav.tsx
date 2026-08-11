@@ -1,9 +1,10 @@
 import { Link } from '@tanstack/react-router'
+import '@/styles/all-hub.css'
 import { cxTrack, useLeadGate, workshopUrl } from './lead-gate'
 
-/* Nav do /motion: mesmo desenho da nav do hub duplicado (sticky, hairline,
-   blur), mas com a identidade Design Viral e o item "Exemplos de todas as
-   animações" pedido no briefing. */
+/* Nav do /motion na linguagem CX App Light (mesma da página /all duplicada):
+   fundo do canvas translúcido com blur, hairline, texto ink, CTA em pílula
+   com o degradê do app. Inclui o item "Exemplos de todas as animações". */
 
 const LINKS = [
   { label: 'Motions ao vivo', href: '/motion#page' },
@@ -15,23 +16,30 @@ export function MotionNav() {
   const { gate } = useLeadGate()
 
   return (
-    <header className="sticky top-0 z-50 border-white/10 border-b bg-[#070a1c]/85 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 px-4 sm:px-8">
-        <Link to="/motion" className="flex items-center gap-2" aria-label="Design Viral">
-          <span className="flex size-7 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 font-extrabold text-[13px] text-slate-950">
+    <header className="cxa cxa-nav sticky top-0 z-50 border-[var(--cxa-hairline)] border-b backdrop-blur">
+      <div className="cxa-shell flex h-16 items-center justify-between gap-4">
+        <Link
+          to="/motion"
+          className="flex items-center gap-2"
+          aria-label="Design Viral"
+        >
+          <span
+            className="flex size-7 items-center justify-center rounded-lg font-bold text-[12px] text-[var(--cxa-ink)]"
+            style={{ background: 'var(--cxa-gradient)' }}
+          >
             DV
           </span>
-          <span className="font-semibold text-[14px] text-slate-100 tracking-[-0.01em]">
-            design<span className="text-cyan-300">viral</span>
+          <span className="font-medium text-[14px] text-[var(--cxa-ink)] tracking-[-0.01em]">
+            designviral
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {LINKS.map(l => (
             <a
               key={l.href}
               href={l.href}
-              className="font-medium text-[13px] text-slate-400 transition-colors hover:text-white"
+              className="font-medium text-[13px] text-[var(--cxa-ink-soft)] transition-colors hover:text-[var(--cxa-ink)]"
             >
               {l.label}
             </a>
@@ -44,9 +52,11 @@ export function MotionNav() {
                 window.location.assign('/motion/biblioteca')
               }, 'library:nav')
             }
-            className="font-medium text-[13px] text-cyan-300 transition-colors hover:text-cyan-200"
+            className="font-semibold text-[13px] text-[var(--cxa-ink)]"
           >
-            Exemplos de todas as animações
+            <span className="cxa-hero-underline">
+              Exemplos de todas as animações
+            </span>
           </button>
         </nav>
 
@@ -55,7 +65,7 @@ export function MotionNav() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => cxTrack('workshop_click', { placement: 'nav' })}
-          className="rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-4 py-2 font-semibold text-[12.5px] text-slate-950 transition-transform hover:scale-[1.03]"
+          className="cxa-pill-gradient !px-4 !py-2 shrink-0 whitespace-nowrap text-[12.5px]"
         >
           Participe do workshop
         </a>
@@ -64,28 +74,37 @@ export function MotionNav() {
   )
 }
 
-/* Faixa de CTA do workshop, usada em vários pontos da página. */
+/* Faixa de CTA do workshop: o "respiro escuro" da página, no mesmo desenho
+   da DarkBand do /all — quase-preto, texto claro e o lima do app só no CTA. */
 export function WorkshopBand({ placement }: { placement: string }) {
   return (
-    <div id={placement === 'mid' ? 'workshop' : undefined} className="bg-[#070a1c] px-4 py-14 text-center">
-      <p className="mb-2 font-semibold text-[11px] text-violet-300 uppercase tracking-[0.2em]">
-        Workshop ao vivo
+    <div
+      id={placement === 'mid' ? 'workshop' : undefined}
+      className="px-6 py-16 text-center"
+      style={{ background: 'var(--cxa-dark, #1a1a1a)' }}
+    >
+      <p className="mb-3 font-medium text-[13px] text-white/50 tracking-[-0.01em]">
+        Workshop ao vivo · 22 e 23 de agosto, o dia todo
       </p>
-      <h3 className="mx-auto max-w-[620px] font-bold text-[26px] text-slate-100 leading-tight sm:text-[32px]">
-        Aprenda a criar essas animações com IA no workshop de Design Engineer
+      <h3 className="mx-auto max-w-[680px] font-semibold text-[26px] text-white leading-[1.12] tracking-[-0.03em] sm:text-[34px]">
+        Construa seu primeiro App com UX e IA do zero{' '}
+        <span style={{ color: 'var(--cxa-lime, #d4ff3f)' }}>em 2 dias.</span>
       </h3>
-      <p className="mx-auto mt-3 max-w-[480px] text-[14.5px] text-slate-400">
-        Do prompt ao deploy: como transformar qualquer página parada em uma
-        experiência viva — sem virar especialista em motion.
+      <p className="mx-auto mt-4 max-w-[520px] text-[14.5px] text-white/60 leading-relaxed">
+        Um workshop ao vivo, dias 22 e 23 de agosto, para quem quer usar IA
+        para transformar aquela tela parada no Figma em um app 100% funcional
+        para o seu portfólio. Tudo na prática, sem escrever uma linha de
+        código.
       </p>
       <a
         href={workshopUrl(placement)}
         target="_blank"
         rel="noopener noreferrer"
         onClick={() => cxTrack('workshop_click', { placement })}
-        className="mt-6 inline-block rounded-full bg-gradient-to-r from-cyan-400 to-violet-500 px-8 py-3.5 font-semibold text-[15px] text-slate-950 transition-transform hover:scale-[1.03]"
+        className="mt-7 inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-semibold text-[14.5px] text-[var(--cxa-ink)] transition-transform hover:translate-y-[-2px]"
+        style={{ background: 'var(--cxa-lime, #d4ff3f)' }}
       >
-        Participe do workshop que vai acontecer →
+        Garantir minha vaga no workshop →
       </a>
     </div>
   )

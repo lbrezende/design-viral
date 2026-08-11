@@ -506,26 +506,26 @@
 }
 .fx-particles i { position: absolute; border-radius: 50%; background: rgba(251, 191, 36, 0.7); width: var(--s); height: var(--s); opacity: var(--o); animation: mv-float-p var(--t) ease-in-out infinite }
 
-/* ── inputs do popup de captura ── */
+/* ── inputs do popup de captura (CX Light) ── */
 .dv-input {
   width: 100%;
   border-radius: 12px;
-  border: 1px solid rgba(129, 140, 248, 0.25);
-  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--cxa-hairline, #e6e8eb);
+  background: var(--cxa-paper, #fff);
   padding: 11px 14px;
   font-size: 14px;
-  color: #f1f5f9;
+  color: var(--cxa-ink, #14171a);
   outline: none;
   transition: border-color 0.15s;
 }
-.dv-input::placeholder { color: #64748b }
-.dv-input:focus { border-color: rgba(34, 211, 238, 0.6) }
+.dv-input::placeholder { color: var(--cxa-icon, #8a8f98) }
+.dv-input:focus { border-color: var(--cxa-ink, #14171a) }
 .dv-phone { width: 100% }
 .dv-phone .react-international-phone-input,
 .dv-phone .react-international-phone-country-selector-button {
-  background: rgba(255, 255, 255, 0.04) !important;
-  border-color: rgba(129, 140, 248, 0.25) !important;
-  color: #f1f5f9 !important;
+  background: var(--cxa-paper, #fff) !important;
+  border-color: var(--cxa-hairline, #e6e8eb) !important;
+  color: var(--cxa-ink, #14171a) !important;
   height: 44px !important;
   font-size: 14px !important;
 }

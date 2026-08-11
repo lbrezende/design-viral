@@ -36,13 +36,13 @@ export function MotionPage() {
   return (
     <LeadGateProvider>
       <ClickmaxPixel projectSlug={CX_PROJECT_SLUG} pageSlug={CX_PAGE_SLUG} />
-      <div className="min-h-screen bg-[#070a1c]">
+      <div className="cxa min-h-screen">
         <MotionNav />
         <MotionHero />
 
         {/* A página /all duplicada, bloco a bloco, cada um com seu motion */}
         <div id="page" className="cxa">
-          <MotionSection name="Hero" defaultMotion="kinetic-type">
+          <MotionSection name="Hero" defaultMotion="logo-assemble">
             <Hero lang="pt" />
           </MotionSection>
           <MotionSection name="Demo do Max" defaultMotion="cursor-demo">
@@ -50,7 +50,7 @@ export function MotionPage() {
               <MaxDemo lang="pt" />
             </div>
           </MotionSection>
-          <MotionSection name="Do It All" defaultMotion="count-up">
+          <MotionSection name="Do It All" defaultMotion="whip-pan">
             <DoItAll lang="pt" />
           </MotionSection>
 

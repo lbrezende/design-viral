@@ -183,29 +183,27 @@ function LeadPopup({
 
   return (
     <div
-      className="fixed inset-0 z-[90] flex items-center justify-center p-4"
-      style={{ background: 'rgba(5, 8, 22, 0.78)', backdropFilter: 'blur(6px)' }}
+      className="cxa fixed inset-0 z-[90] flex items-center justify-center p-4 !bg-transparent"
+      style={{ background: 'rgba(20, 23, 26, 0.4)', backdropFilter: 'blur(4px)' }}
       role="dialog"
       aria-modal="true"
       aria-label="Biblioteca de animações"
     >
-      <div className="relative w-full max-w-[420px] rounded-2xl border border-indigo-400/25 bg-[#0b0f23] p-7 text-slate-100 shadow-[0_40px_120px_rgba(0,0,0,.6)]">
+      <div className="relative w-full max-w-[420px] rounded-[var(--cxa-radius)] bg-[var(--cxa-paper)] p-7 text-[var(--cxa-ink)] shadow-[var(--cxa-shadow-lift)]">
         <button
           type="button"
           onClick={onClose}
           aria-label="Fechar"
-          className="absolute top-4 right-4 flex size-8 items-center justify-center rounded-full text-slate-400 transition-colors hover:bg-white/10 hover:text-white"
+          className="absolute top-4 right-4 flex size-8 items-center justify-center rounded-full text-[var(--cxa-icon)] transition-colors hover:bg-[var(--cxa-subtle)] hover:text-[var(--cxa-ink)]"
         >
           ✕
         </button>
 
-        <p className="mb-1 font-semibold text-[11px] text-indigo-300 uppercase tracking-[0.18em]">
-          Biblioteca de animações
-        </p>
-        <h3 className="mb-2 font-bold text-[22px] leading-tight">
+        <p className="cxa-eyebrow mb-2">Biblioteca de animações</p>
+        <h3 className="mb-2 font-semibold text-[22px] leading-tight tracking-[-0.02em]">
           Veja gratuitamente toda a biblioteca de animações.
         </h3>
-        <p className="mb-5 text-[14px] text-slate-400 leading-relaxed">
+        <p className="mb-5 text-[14px] text-[var(--cxa-ink-soft)] leading-relaxed">
           Basta deixar seu nome, email e telefone — e todos os 42 motions, com
           prompts prontos para copiar, ficam liberados.
         </p>
@@ -244,14 +242,15 @@ function LeadPopup({
           <button
             type="submit"
             disabled={busy}
-            className="mt-1 rounded-xl bg-gradient-to-r from-cyan-400 to-violet-500 px-5 py-3 font-semibold text-[15px] text-slate-950 transition-transform hover:scale-[1.02] disabled:opacity-60"
+            className="cxa-pill-gradient mt-1 w-full justify-center disabled:opacity-60"
           >
             {busy ? 'Liberando…' : 'Liberar a biblioteca gratuita'}
           </button>
         </form>
 
-        <p className="mt-4 text-[11.5px] text-slate-500 leading-relaxed">
-          Sem spam: só a biblioteca e o convite do workshop de Design Engineer.
+        <p className="mt-4 text-[11.5px] text-[var(--cxa-ink-soft)] leading-relaxed">
+          Sem spam: só a biblioteca e o convite do workshop de 22 e 23 de
+          agosto do Design Engineer.
         </p>
       </div>
     </div>
