@@ -6,11 +6,7 @@ import { cxTrack, useLeadGate, workshopUrl } from './lead-gate'
    fundo do canvas translúcido com blur, hairline, texto ink, CTA em pílula
    com o degradê do app. Inclui o item "Exemplos de todas as animações". */
 
-const LINKS = [
-  { label: 'Motions ao vivo', href: '/motion#page' },
-  { label: 'Como funciona', href: '/motion#demo' },
-  { label: 'Workshop', href: '/motion#workshop' },
-]
+const LINKS = [{ label: 'Exemplo Clickmax', href: '/motion' }]
 
 export function MotionNav() {
   const { gate } = useLeadGate()
@@ -54,9 +50,7 @@ export function MotionNav() {
             }
             className="font-semibold text-[13px] text-[var(--cxa-ink)]"
           >
-            <span className="cxa-hero-underline">
-              Exemplos de todas as animações
-            </span>
+            <span className="cxa-hero-underline">Biblioteca de animações</span>
           </button>
         </nav>
 

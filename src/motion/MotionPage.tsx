@@ -13,7 +13,6 @@ import { ModuleShowcase } from '@/sections/allhub/all/ModuleShowcase'
 import { Partnership } from '@/sections/allhub/all/Partnership'
 import { CX_PAGE_SLUG, CX_PROJECT_SLUG } from './cx-config'
 import { LeadGateProvider } from './lead-gate'
-import { MotionHero } from './MotionHero'
 import { MotionNav, WorkshopBand } from './MotionNav'
 import { MotionSection } from './motion-section'
 
@@ -38,9 +37,11 @@ export function MotionPage() {
       <ClickmaxPixel projectSlug={CX_PROJECT_SLUG} pageSlug={CX_PAGE_SLUG} />
       <div className="cxa min-h-screen">
         <MotionNav />
-        <MotionHero />
 
-        {/* A página /all duplicada, bloco a bloco, cada um com seu motion */}
+        {/* A raiz é o próprio /all duplicado, bloco a bloco — o botão
+            flutuante de cada bloco informa o motion em uso e deixa inserir
+            dobras de exemplo. O grid completo com filtros mora na
+            biblioteca ("Exemplos de todas as animações"). */}
         <div id="page" className="cxa">
           <MotionSection name="Hero" defaultMotion="logo-assemble">
             <Hero lang="pt" />
