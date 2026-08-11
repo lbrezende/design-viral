@@ -8,6 +8,7 @@ import {
 } from 'react'
 import { PhoneInput } from 'react-international-phone'
 import 'react-international-phone/style.css'
+import { CX_TOKEN } from './cx-config'
 
 /* Lead gate do Design Viral: qualquer ação "premium" (testar/trocar um motion,
    copiar prompt, abrir a biblioteca completa) passa por aqui. Se a pessoa já
@@ -39,6 +40,31 @@ export function cxTrack(event: string, data?: Record<string, unknown>): void {
     if (typeof c === 'function') c('track', event, data)
   } catch {
     /* sem SDK vira no-op */
+  }
+}
+
+/* Canal garantido da captura externa: o webhook de entrada do workspace
+   UX Unicórnio (token cx-token-…) recebe o lead mesmo antes de o projeto
+   "Campanhas virais" existir no painel — o Browser SDK abaixo complementa
+   atrelando o lead à sessão/cliques da página. */
+function webhookLead(name: string, email: string, phone: string): void {
+  try {
+    fetch(`https://webhooks.clickmax.io/${CX_TOKEN}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      keepalive: true,
+      body: JSON.stringify({
+        event: 'lead',
+        name: name.trim() || undefined,
+        email: email.trim(),
+        phone: phone.replace(/\D/g, '') || undefined,
+        source: 'designviral.vercel.app/motion',
+        project: 'Campanhas virais',
+        funnel: 'UX Motion',
+      }),
+    }).catch(() => {})
+  } catch {
+    /* best-effort */
   }
 }
 
@@ -142,6 +168,7 @@ function LeadPopup({
     if (busy || !email.trim()) return
     setBusy(true)
     cxsLead(nome, email, phone)
+    webhookLead(nome, email, phone)
     cxTrack('lead_captured', { origin: 'motion_gate' })
     try {
       localStorage.setItem(CAPTURED_KEY, '1')
