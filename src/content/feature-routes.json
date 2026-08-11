@@ -1,0 +1,666 @@
+[
+  {
+    "slug": "funnelatormax",
+    "name": "CX Funnels",
+    "tipo": "feature",
+    "rota": "/feature/funis",
+    "cxName": "CX Funnels",
+    "origem": "https://funnelatormax.vercel.app/pt/"
+  },
+  {
+    "slug": "toppagesmax",
+    "name": "CX Pages",
+    "tipo": "feature",
+    "rota": "/feature/paginas",
+    "cxName": "CX Pages",
+    "origem": "https://toppagesmax.vercel.app/pt/"
+  },
+  {
+    "slug": "betterversionmax",
+    "name": "CX Split",
+    "tipo": "feature",
+    "rota": "/feature/teste-ab",
+    "cxName": "CX Split",
+    "origem": "https://betterversionmax.vercel.app/pt/"
+  },
+  {
+    "slug": "askmachinemax",
+    "name": "CX Quiz",
+    "tipo": "feature",
+    "rota": "/feature/quiz",
+    "cxName": "CX Quiz",
+    "origem": "https://askmachinemax.vercel.app/pt/"
+  },
+  {
+    "slug": "rightpeoplemax",
+    "name": "CX Leads",
+    "tipo": "feature",
+    "rota": "/feature/segmentacao",
+    "cxName": "CX Leads",
+    "origem": "https://rightpeoplemax.vercel.app/pt/"
+  },
+  {
+    "slug": "automatormax",
+    "name": "CX Flows",
+    "tipo": "feature",
+    "rota": "/feature/automacoes",
+    "cxName": "CX Flows",
+    "origem": "https://automatormax.vercel.app/pt/"
+  },
+  {
+    "slug": "zapmachinemax",
+    "name": "CX Send",
+    "tipo": "feature",
+    "rota": "/feature/whatsapp",
+    "cxName": "CX Send",
+    "origem": "https://zapmachinemax.vercel.app/pt/"
+  },
+  {
+    "slug": "conversatormax",
+    "name": "CX Direct",
+    "tipo": "feature",
+    "rota": "/feature/instagram",
+    "cxName": "CX Direct",
+    "origem": "https://conversatormax.vercel.app/pt/"
+  },
+  {
+    "slug": "moodreadermax",
+    "name": "CX Mood",
+    "tipo": "feature",
+    "rota": "/feature/sentimento",
+    "cxName": "CX Mood",
+    "origem": "https://moodreadermax.vercel.app/pt/"
+  },
+  {
+    "slug": "smsblastermax",
+    "name": "CX SMS",
+    "tipo": "feature",
+    "rota": "/feature/sms",
+    "cxName": "CX SMS",
+    "origem": "https://smsblastermax.vercel.app/pt/"
+  },
+  {
+    "slug": "callinatormax",
+    "name": "CX Calls",
+    "tipo": "feature",
+    "rota": "/feature/ligacoes",
+    "cxName": "CX Calls",
+    "origem": "https://callinatormax.vercel.app/pt/"
+  },
+  {
+    "slug": "emailwizardmax",
+    "name": "CX Mail",
+    "tipo": "feature",
+    "rota": "/feature/email",
+    "cxName": "CX Mail",
+    "origem": "https://emailwizardmax.vercel.app/pt/"
+  },
+  {
+    "slug": "memberbuildermax",
+    "name": "CX Members",
+    "tipo": "feature",
+    "rota": "/feature/area-de-membros",
+    "cxName": "CX Members",
+    "origem": "https://memberbuildermax.vercel.app/pt/"
+  },
+  {
+    "slug": "courseflixmax",
+    "name": "CX Courses",
+    "tipo": "feature",
+    "rota": "/feature/cursos",
+    "cxName": "CX Courses",
+    "origem": "https://courseflixmax.vercel.app/pt/"
+  },
+  {
+    "slug": "communitymax",
+    "name": "CX Community",
+    "tipo": "feature",
+    "rota": "/feature/comunidade",
+    "cxName": "CX Community",
+    "origem": "https://communitymax.vercel.app/pt/"
+  },
+  {
+    "slug": "crmastermax",
+    "name": "CX Clients",
+    "tipo": "feature",
+    "rota": "/feature/crm",
+    "cxName": "CX Clients",
+    "origem": "https://crmastermax.vercel.app/pt/"
+  },
+  {
+    "slug": "checkoutsmax",
+    "name": "CX Pay",
+    "tipo": "feature",
+    "rota": "/feature/checkout",
+    "cxName": "CX Pay",
+    "origem": "https://checkoutsmax.vercel.app/pt/"
+  },
+  {
+    "slug": "syncmastermax",
+    "name": "CX Sync",
+    "tipo": "feature",
+    "rota": "/feature/integracoes",
+    "cxName": "CX Sync",
+    "origem": "https://syncmastermax.vercel.app/pt/"
+  },
+  {
+    "slug": "buildeverythingmax",
+    "name": "CX Geral",
+    "tipo": "feature",
+    "rota": "/feature/plataforma",
+    "cxName": "CX Geral",
+    "origem": "https://buildeverythingmax.vercel.app/pt/"
+  },
+  {
+    "slug": "onescreenmax",
+    "name": "Plataforma tudo em um",
+    "tipo": "caso",
+    "rota": "/caso/maquina-numa-tela",
+    "cxName": null,
+    "origem": "https://onescreenmax.vercel.app/pt/"
+  },
+  {
+    "slug": "cohortfactorymax",
+    "name": "Matrícula automática",
+    "tipo": "caso",
+    "rota": "/caso/linha-de-montagem-da-turma",
+    "cxName": null,
+    "origem": "https://cohortfactorymax.vercel.app/pt/"
+  },
+  {
+    "slug": "embedcheckoutmax",
+    "name": "Checkout na sua página",
+    "tipo": "caso",
+    "rota": "/caso/caixa-dentro-da-loja",
+    "cxName": null,
+    "origem": "https://embedcheckoutmax.vercel.app/pt/"
+  },
+  {
+    "slug": "prooffirstmax",
+    "name": "Funil com prova social",
+    "tipo": "caso",
+    "rota": "/caso/prova-antes-da-promessa",
+    "cxName": null,
+    "origem": "https://prooffirstmax.vercel.app/pt/"
+  },
+  {
+    "slug": "blankkillermax",
+    "name": "Modelo de página pronto",
+    "tipo": "caso",
+    "rota": "/caso/fim-da-tela-em-branco",
+    "cxName": null,
+    "origem": "https://blankkillermax.vercel.app/pt/"
+  },
+  {
+    "slug": "ownaudiencemax",
+    "name": "Lista de contatos do Instagram",
+    "tipo": "caso",
+    "rota": "/caso/audiencia-a-prova-de-algoritmo",
+    "cxName": null,
+    "origem": "https://ownaudiencemax.vercel.app/pt/"
+  },
+  {
+    "slug": "nightdeskmax",
+    "name": "Atendimento fora do horário",
+    "tipo": "caso",
+    "rota": "/caso/recepcao-que-nao-dorme",
+    "cxName": null,
+    "origem": "https://nightdeskmax.vercel.app/pt/"
+  },
+  {
+    "slug": "buyersonlymax",
+    "name": "Qualificação de leads",
+    "tipo": "caso",
+    "rota": "/caso/so-fala-com-quem-compra",
+    "cxName": null,
+    "origem": "https://buyersonlymax.vercel.app/pt/"
+  },
+  {
+    "slug": "moneyxraymax",
+    "name": "Quiz de diagnóstico financeiro",
+    "tipo": "caso",
+    "rota": "/caso/raio-x-financeiro",
+    "cxName": null,
+    "origem": "https://moneyxraymax.vercel.app/pt/"
+  },
+  {
+    "slug": "homematchmax",
+    "name": "Triagem de compradores de imóvel",
+    "tipo": "caso",
+    "rota": "/caso/quiz-do-imovel-certo",
+    "cxName": null,
+    "origem": "https://homematchmax.vercel.app/pt/"
+  },
+  {
+    "slug": "shelfgeniusmax",
+    "name": "Recomendador de produtos",
+    "tipo": "caso",
+    "rota": "/caso/vendedor-de-prateleira",
+    "cxName": null,
+    "origem": "https://shelfgeniusmax.vercel.app/pt/"
+  },
+  {
+    "slug": "dealradarmax",
+    "name": "Sugestão de resposta na call",
+    "tipo": "caso",
+    "rota": "/caso/ponto-invisivel",
+    "cxName": null,
+    "origem": "https://dealradarmax.vercel.app/pt/"
+  },
+  {
+    "slug": "methodboardmax",
+    "name": "Painel de negociações paradas",
+    "tipo": "caso",
+    "rota": "/caso/metodo-na-tela",
+    "cxName": null,
+    "origem": "https://methodboardmax.vercel.app/pt/"
+  },
+  {
+    "slug": "mirrorscoremax",
+    "name": "Diagnóstico do cliente antes da proposta",
+    "tipo": "caso",
+    "rota": "/caso/espelho-antes-do-preco",
+    "cxName": null,
+    "origem": "https://mirrorscoremax.vercel.app/pt/"
+  },
+  {
+    "slug": "zerodropmax",
+    "name": "Segundo contato automático",
+    "tipo": "caso",
+    "rota": "/caso/nenhum-cliente-cai",
+    "cxName": null,
+    "origem": "https://zerodropmax.vercel.app/pt/"
+  },
+  {
+    "slug": "franchiserailmax",
+    "name": "Seleção de franqueados",
+    "tipo": "caso",
+    "rota": "/caso/expansao-no-trilho",
+    "cxName": null,
+    "origem": "https://franchiserailmax.vercel.app/pt/"
+  },
+  {
+    "slug": "rescuebuttonmax",
+    "name": "Recuperação de carrinho",
+    "tipo": "caso",
+    "rota": "/caso/botao-de-resgate",
+    "cxName": null,
+    "origem": "https://rescuebuttonmax.vercel.app/pt/"
+  },
+  {
+    "slug": "cashdetectivemax",
+    "name": "Auditoria de vendas perdidas",
+    "tipo": "caso",
+    "rota": "/caso/detetive-do-caixa",
+    "cxName": null,
+    "origem": "https://cashdetectivemax.vercel.app/pt/"
+  },
+  {
+    "slug": "fullchairmax",
+    "name": "Reagendamento automático",
+    "tipo": "caso",
+    "rota": "/caso/cadeira-vazia",
+    "cxName": null,
+    "origem": "https://fullchairmax.vercel.app/pt/"
+  },
+  {
+    "slug": "fulltablemax",
+    "name": "Base própria de clientes",
+    "tipo": "caso",
+    "rota": "/caso/mesa-que-volta-a-encher",
+    "cxName": null,
+    "origem": "https://fulltablemax.vercel.app/pt/"
+  },
+  {
+    "slug": "secondyesmax",
+    "name": "Recuperação de matrícula abandonada",
+    "tipo": "caso",
+    "rota": "/caso/segundo-sim",
+    "cxName": null,
+    "origem": "https://secondyesmax.vercel.app/pt/"
+  },
+  {
+    "slug": "hotembermax",
+    "name": "Reativação de leads frios",
+    "tipo": "caso",
+    "rota": "/caso/brasa-viva",
+    "cxName": null,
+    "origem": "https://hotembermax.vercel.app/pt/"
+  },
+  {
+    "slug": "recalldeskmax",
+    "name": "Lembrete de consulta",
+    "tipo": "caso",
+    "rota": "/caso/recepcionista-que-nunca-esquece",
+    "cxName": null,
+    "origem": "https://recalldeskmax.vercel.app/pt/"
+  },
+  {
+    "slug": "ghostwaitermax",
+    "name": "Lembrete de recompra",
+    "tipo": "caso",
+    "rota": "/caso/garcom-invisivel",
+    "cxName": null,
+    "origem": "https://ghostwaitermax.vercel.app/pt/"
+  },
+  {
+    "slug": "minuteonemax",
+    "name": "Resposta imediata ao lead",
+    "tipo": "caso",
+    "rota": "/caso/plantao-do-minuto-um",
+    "cxName": null,
+    "origem": "https://minuteonemax.vercel.app/pt/"
+  },
+  {
+    "slug": "fivechannelmax",
+    "name": "Jornada multicanal",
+    "tipo": "caso",
+    "rota": "/caso/maestro-de-cinco-canais",
+    "cxName": null,
+    "origem": "https://fivechannelmax.vercel.app/pt/"
+  },
+  {
+    "slug": "masterrecipemax",
+    "name": "Funil replicado por unidade",
+    "tipo": "caso",
+    "rota": "/caso/receita-da-matriz",
+    "cxName": null,
+    "origem": "https://masterrecipemax.vercel.app/pt/"
+  },
+  {
+    "slug": "steadyfrontmax",
+    "name": "Caixa de entrada unificada",
+    "tipo": "caso",
+    "rota": "/caso/recepcao-que-nunca-falta",
+    "cxName": null,
+    "origem": "https://steadyfrontmax.vercel.app/pt/"
+  },
+  {
+    "slug": "nolostordermax",
+    "name": "Fila única de pedidos",
+    "tipo": "caso",
+    "rota": "/caso/balcao-que-nao-perde-pedido",
+    "cxName": null,
+    "origem": "https://nolostordermax.vercel.app/pt/"
+  },
+  {
+    "slug": "supportpilotmax",
+    "name": "Suporte ao cliente com IA",
+    "tipo": "caso",
+    "rota": "/caso/secretaria-do-seu-sac",
+    "cxName": null,
+    "origem": "https://supportpilotmax.vercel.app/pt/"
+  },
+  {
+    "slug": "closedloopmax",
+    "name": "Atendimento gerenciado pela agência",
+    "tipo": "caso",
+    "rota": "/caso/loop-fechado",
+    "cxName": null,
+    "origem": "https://closedloopmax.vercel.app/pt/"
+  },
+  {
+    "slug": "bingecoursemax",
+    "name": "Área de aulas em vídeo",
+    "tipo": "caso",
+    "rota": "/caso/netflix-do-seu-curso",
+    "cxName": null,
+    "origem": "https://bingecoursemax.vercel.app/pt/"
+  },
+  {
+    "slug": "dropoutzeromax",
+    "name": "Retenção de alunos",
+    "tipo": "caso",
+    "rota": "/caso/fim-da-evasao",
+    "cxName": null,
+    "origem": "https://dropoutzeromax.vercel.app/pt/"
+  },
+  {
+    "slug": "evergreenmax",
+    "name": "Assinatura de comunidade",
+    "tipo": "caso",
+    "rota": "/caso/fim-do-lancamento-eterno",
+    "cxName": null,
+    "origem": "https://evergreenmax.vercel.app/pt/"
+  },
+  {
+    "slug": "leakproofmax",
+    "name": "Treinamento de franqueados",
+    "tipo": "caso",
+    "rota": "/caso/rede-a-prova-de-vazamento",
+    "cxName": null,
+    "origem": "https://leakproofmax.vercel.app/pt/"
+  },
+  {
+    "slug": "firstrecurringmax",
+    "name": "Mensalidade do grupo fechado",
+    "tipo": "caso",
+    "rota": "/caso/sua-primeira-recorrencia",
+    "cxName": null,
+    "origem": "https://firstrecurringmax.vercel.app/pt/"
+  },
+  {
+    "slug": "budgetgpsmax",
+    "name": "Origem da venda por anúncio",
+    "tipo": "caso",
+    "rota": "/caso/gps-da-verba",
+    "cxName": null,
+    "origem": "https://budgetgpsmax.vercel.app/pt/"
+  },
+  {
+    "slug": "cloaklinkmax",
+    "name": "Filtro de acesso à oferta",
+    "tipo": "caso",
+    "rota": "/caso/link-camuflado",
+    "cxName": null,
+    "origem": "https://cloaklinkmax.vercel.app/pt/"
+  },
+  {
+    "slug": "adroimax",
+    "name": "Margem real por anúncio",
+    "tipo": "caso",
+    "rota": "/caso/roi-por-anuncio-na-loja",
+    "cxName": null,
+    "origem": "https://adroimax.vercel.app/pt/"
+  },
+  {
+    "slug": "advancecashmax",
+    "name": "Antecipação de recebíveis",
+    "tipo": "caso",
+    "rota": "/caso/caixa-adiantado",
+    "cxName": null,
+    "origem": "https://advancecashmax.vercel.app/pt/"
+  },
+  {
+    "slug": "instantpayoutmax",
+    "name": "Recebimento à vista do parcelado",
+    "tipo": "caso",
+    "rota": "/caso/caixa-que-ja-e-seu",
+    "cxName": null,
+    "origem": "https://instantpayoutmax.vercel.app/pt/"
+  },
+  {
+    "slug": "dayzeropaymax",
+    "name": "Previsão de fluxo de caixa",
+    "tipo": "caso",
+    "rota": "/caso/fim-do-dia-cinco",
+    "cxName": null,
+    "origem": "https://dayzeropaymax.vercel.app/pt/"
+  },
+  {
+    "slug": "funnellicensemax",
+    "name": "Programa de afiliados",
+    "tipo": "caso",
+    "rota": "/caso/franquia-sem-folha",
+    "cxName": null,
+    "origem": "https://funnellicensemax.vercel.app/pt/"
+  },
+  {
+    "slug": "networkmoldmax",
+    "name": "Padronização digital da rede",
+    "tipo": "caso",
+    "rota": "/caso/forma-da-rede",
+    "cxName": null,
+    "origem": "https://networkmoldmax.vercel.app/pt/"
+  },
+  {
+    "slug": "funnelclonemax",
+    "name": "Funil clonado para parceiros",
+    "tipo": "caso",
+    "rota": "/caso/franquia-de-funil",
+    "cxName": null,
+    "origem": "https://funnelclonemax.vercel.app/pt/"
+  },
+  {
+    "slug": "onelinemax",
+    "name": "Funil montado por IA",
+    "tipo": "caso",
+    "rota": "/caso/funil-de-uma-frase",
+    "cxName": null,
+    "origem": "https://onelinemax.vercel.app/pt/"
+  },
+  {
+    "slug": "firstreplymax",
+    "name": "Pedido de orçamento online",
+    "tipo": "caso",
+    "rota": "/caso/primeiro-a-responder",
+    "cxName": null,
+    "origem": "https://firstreplymax.vercel.app/pt/"
+  },
+  {
+    "slug": "knowledgepackmax",
+    "name": "Montagem de curso com IA",
+    "tipo": "caso",
+    "rota": "/caso/conhecimento-embalado",
+    "cxName": null,
+    "origem": "https://knowledgepackmax.vercel.app/pt/"
+  },
+  {
+    "slug": "leadalchemymax",
+    "name": "Quiz gerado por IA",
+    "tipo": "caso",
+    "rota": "/caso/chumbo-em-ouro",
+    "cxName": null,
+    "origem": "https://leadalchemymax.vercel.app/pt/"
+  },
+  {
+    "slug": "firststandmax",
+    "name": "Primeira página de vendas",
+    "tipo": "caso",
+    "rota": "/caso/primeira-barraca",
+    "cxName": null,
+    "origem": "https://firststandmax.vercel.app/pt/"
+  },
+  {
+    "slug": "chatcrmmax",
+    "name": "CRM montado por IA",
+    "tipo": "caso",
+    "rota": "/caso/crm-em-uma-conversa",
+    "cxName": null,
+    "origem": "https://chatcrmmax.vercel.app/pt/"
+  },
+  {
+    "slug": "lightsonmax",
+    "name": "Painel de gastos com IA",
+    "tipo": "caso",
+    "rota": "/caso/ia-na-luz",
+    "cxName": null,
+    "origem": "https://lightsonmax.vercel.app/pt/"
+  },
+  {
+    "slug": "copyoncallmax",
+    "name": "Descrições geradas por IA",
+    "tipo": "caso",
+    "rota": "/caso/redator-de-plantao",
+    "cxName": null,
+    "origem": "https://copyoncallmax.vercel.app/pt/"
+  },
+  {
+    "slug": "digitalfrontmax",
+    "name": "Atendimento digital da clínica",
+    "tipo": "caso",
+    "rota": "/caso/recepcionista-digital",
+    "cxName": null,
+    "origem": "https://digitalfrontmax.vercel.app/pt/"
+  },
+  {
+    "slug": "digitalcountermax",
+    "name": "Pedidos sem marketplace",
+    "tipo": "caso",
+    "rota": "/caso/balcao-digital",
+    "cxName": null,
+    "origem": "https://digitalcountermax.vercel.app/pt/"
+  },
+  {
+    "slug": "portablebasemax",
+    "name": "Importação de contatos",
+    "tipo": "caso",
+    "rota": "/caso/base-portatil",
+    "cxName": null,
+    "origem": "https://portablebasemax.vercel.app/pt/"
+  },
+  {
+    "slug": "admissionboardmax",
+    "name": "Processo seletivo de matrícula",
+    "tipo": "caso",
+    "rota": "/caso/comite-de-admissao",
+    "cxName": null,
+    "origem": "https://admissionboardmax.vercel.app/pt/"
+  },
+  {
+    "slug": "onedoormax",
+    "name": "Teste de nível online",
+    "tipo": "caso",
+    "rota": "/caso/porta-unica",
+    "cxName": null,
+    "origem": "https://onedoormax.vercel.app/pt/"
+  },
+  {
+    "slug": "onelanemax",
+    "name": "Venda de pacote pelo direct",
+    "tipo": "caso",
+    "rota": "/caso/corredor-unico",
+    "cxName": null,
+    "origem": "https://onelanemax.vercel.app/pt/"
+  },
+  {
+    "slug": "echofollowmax",
+    "name": "Follow-up de proposta",
+    "tipo": "caso",
+    "rota": "/caso/eco",
+    "cxName": null,
+    "origem": "https://echofollowmax.vercel.app/pt/"
+  },
+  {
+    "slug": "alwaysonmax",
+    "name": "Recuperação de boleto e Pix vencidos",
+    "tipo": "caso",
+    "rota": "/caso/esteira-que-nao-dorme",
+    "cxName": null,
+    "origem": "https://alwaysonmax.vercel.app/pt/"
+  },
+  {
+    "slug": "neverclosedmax",
+    "name": "Plantão de vendas 24 horas",
+    "tipo": "caso",
+    "rota": "/caso/plantao-que-nunca-fecha",
+    "cxName": null,
+    "origem": "https://neverclosedmax.vercel.app/pt/"
+  },
+  {
+    "slug": "safevestmax",
+    "name": "Proteção da conta de anúncios",
+    "tipo": "caso",
+    "rota": "/caso/colete-do-estreante",
+    "cxName": null,
+    "origem": "https://safevestmax.vercel.app/pt/"
+  },
+  {
+    "slug": "hqbrainmax",
+    "name": "Painel da rede de unidades",
+    "tipo": "caso",
+    "rota": "/caso/cerebro-da-matriz-em-cada-unidade",
+    "cxName": null,
+    "origem": "https://hqbrainmax.vercel.app/pt/"
+  }
+]

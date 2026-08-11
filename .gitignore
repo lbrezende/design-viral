@@ -1,0 +1,7 @@
+node_modules
+dist
+dist-rotas
+.DS_Store
+*.local
+.vercel
+clickmax-source/

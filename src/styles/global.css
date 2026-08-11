@@ -1,0 +1,274 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@utility container {
+  @apply mx-auto !px-4 sm:!px-[112px] max-w-full xl:max-w-[1440px] w-full;
+}
+
+/* Páginas afiliados: 24px de margem lateral no mobile (mantém 112px no desktop). */
+@layer utilities {
+  .afiliados-page .container {
+    @apply !px-6 sm:!px-[112px];
+  }
+}
+
+/* Páginas afiliados: qualquer seção #131316 assume o tom do hero (#0B0C0E). */
+.afiliados-page,
+.afiliados-page .bg-\[\#131316\] {
+  background-color: #0b0c0e;
+}
+
+@utility gradient {
+  @apply bg-gradient-to-r from-[#B0DAF8] via-[#ADE3AF] to-[#DEFB82];
+}
+
+@theme inline {
+  --font-inter: "Inter", "sans-serif";
+  --font-kalam: "Kalam", "sans-serif";
+  /* Tokens used by the /amanda Clickmax-Pages port (additive). */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-brand-50: #faf5ff;
+  --color-brand-100: #f3e8ff;
+  --color-brand-500: #a855f7;
+  --color-brand-600: #9333ea;
+  --color-brand-700: #7e22ce;
+  --color-brand-900: #3b0764;
+  --color-linha: rgba(255, 255, 255, 0.02);
+  --radius-card: 1rem;
+  --radius-btn: 0.5rem;
+  --shadow-card: 0 4px 24px 0 rgb(0 0 0 / 0.08);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-marquee: marquee var(--duration) infinite linear;
+  --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+    from {
+      transform: translateY(0);
+    }
+    to {
+      transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  .scrollbar-hide {
+    @apply overflow-auto [scrollbar-width:none] [-ms-overflow-style:none];
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  .text-gradient {
+    @apply gradient bg-clip-text text-transparent;
+  }
+
+  .title-gradient {
+    @apply bg-gradient-to-b from-[24%] from-white to-[#878789] bg-clip-text text-transparent;
+  }
+
+  .badge {
+    @apply relative flex min-h-8 items-center rounded-full px-4 py-1.5 shadow-[inset_1px_1px_0px_0px_rgba(255,255,255,0.25),inset_-1px_-1px_0px_0px_rgba(13,13,14,1.00)];
+    background:
+      linear-gradient(
+        184deg,
+        rgba(13, 13, 14, 0) 2.16%,
+        rgba(13, 13, 14, 0.4) 112.47%
+      ),
+      radial-gradient(
+        52.24% 251.78% at 25.17% -105.47%,
+        rgba(255, 255, 255, 0.3) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ), #19191c;
+  }
+
+  .badge-award {
+    @apply relative flex items-center gap-1 rounded-full p-[3px] sm:pl-2 pr-1.5 sm:pr-4 sm:py-[5px] shadow-[0px_0px_0px_1px_rgba(28,32,36,1.00),0px_1px_2px_0px_rgba(28,32,36,0.48)];
+    background:
+      linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 100%
+      ), #1c2024;
+  }
+
+  .badge-icon {
+    @apply [&>svg]:size-3.5 sm:[&>svg]:size-5 [&>svg]:h-auto bg-gradient-to-b from-white/0 to-white/10 bg-[#1C2024] w-10 h-10 rounded-full flex items-center justify-center outline-[1.50px] outline-offset-[-1.50px] outline-white/10;
+  }
+
+  .bg-pattern {
+    background: repeating-linear-gradient(
+      45deg,
+      var(--color-track),
+      var(--color-track) var(--width-track),
+      var(--color-track-bg) var(--width-track),
+      var(--color-track-bg) var(--width-space)
+    );
+  }
+
+  video {
+    background: transparent !important;
+    -webkit-background-clip: content-box;
+    background-clip: content-box;
+  }
+
+  /* Fix para background preto no iOS */
+  video::-webkit-media-controls {
+    background: transparent !important;
+  }
+
+  video::-webkit-media-controls-panel {
+    background: transparent !important;
+  }
+
+  /* Fallback específico para iOS */
+  @supports (-webkit-touch-callout: none) {
+    video {
+      background: transparent !important;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+    }
+  }
+}

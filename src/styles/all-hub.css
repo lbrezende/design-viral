@@ -1,0 +1,640 @@
+/* CX App Light — linguagem visual compartilhada das novas rotas do hub
+   (/all, páginas de módulo, /parceiros, /oficial). Ver docs/ALL-HUB-SPEC.md.
+
+   Os tokens abaixo são o design system do APP ClickMax (não uma paleta
+   editorial genérica): fundo cinza-claro levemente degradê, superfícies
+   brancas com raio 16-20px e sombra suave, texto quase-preto, hairline
+   cinza e o degradê gráfico teal → verde → lima. Os NOMES das variáveis
+   são contrato com os demais componentes do hub — só os valores mudam. */
+
+:root {
+  /* Superfícies ------------------------------------------------------ */
+  /* cor sólida do fundo (usada por overlays/nav que precisam de cor pura) */
+  --cxa-canvas: #f4f5f6;
+  /* fundo geral do app: cinza-claro levemente degradê */
+  --cxa-canvas-grad: linear-gradient(180deg, #f4f5f6 0%, #edeff1 100%);
+  --cxa-paper: #ffffff;
+  --cxa-subtle: #edeff1;
+
+  /* Texto ------------------------------------------------------------ */
+  --cxa-ink: #14171a;
+  /* secundário do app é #6B7280; escurecido para #5F6773 (mesma família)
+     porque #6B7280 fica em ~4.1:1 sobre a base #EDEFF1 do canvas e o
+     cliente já reclamou de texto lavado. Este valor passa AA (>=4.6:1)
+     tanto no canvas quanto no branco. */
+  --cxa-ink-soft: #5f6773;
+  /* cinza dos ícones em repouso (sidebar/círculos do app) */
+  --cxa-icon: #8a8f98;
+
+  /* Estrutura -------------------------------------------------------- */
+  --cxa-hairline: #e6e8eb;
+  --cxa-dark: #1a1a1a;
+  --cxa-radius: 18px;
+  --cxa-radius-sm: 12px;
+  --cxa-shadow:
+    0 1px 2px rgba(20, 20, 19, 0.04), 0 8px 24px -16px rgba(20, 20, 19, 0.18);
+  --cxa-shadow-lift:
+    0 1px 2px rgba(20, 20, 19, 0.05), 0 18px 40px -22px rgba(20, 20, 19, 0.28);
+
+  /* Acento gráfico: degradê teal → verde → lima do app ---------------- */
+  --cxa-g1: #5cd3c4;
+  --cxa-g2: #8be07a;
+  --cxa-g3: #c8f244;
+  --cxa-gradient: linear-gradient(
+    90deg,
+    var(--cxa-g1),
+    var(--cxa-g2),
+    var(--cxa-g3)
+  );
+  --cxa-accent: #5cd3c4;
+  /* lima puro — só para destaques pontuais */
+  --cxa-lime: #d4ff3f;
+
+  /* Tipografia ------------------------------------------------------- */
+  --cxa-mono: "Geist Mono", "IBM Plex Mono", monospace;
+  --cxa-sans: "Inter", sans-serif;
+}
+
+.cxa {
+  background: var(--cxa-canvas-grad);
+  color: var(--cxa-ink);
+  font-family: var(--cxa-sans);
+}
+
+/* O rótulo pequeno usa a MESMA fonte da headline. Caixa-alta espaçada em
+   mono dava um ar de etiqueta técnica que não é o tom do produto, e obrigava
+   o olho a decodificar letra por letra antes de ler a frase. */
+.cxa-eyebrow {
+  font-family: var(--cxa-sans);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-size: 13px;
+  color: var(--cxa-ink-soft);
+}
+
+.cxa-section {
+  border-top: 1px solid var(--cxa-hairline);
+}
+
+.cxa-section:first-child {
+  border-top: none;
+}
+
+.cxa-section-dark {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.cxa-section-dark:first-child {
+  border-top: none;
+}
+
+/* Barra de navegação: fundo do app translúcido (mantém o backdrop-blur).
+   Declarada depois de .cxa para vencer o gradiente do wrapper. */
+.cxa-nav {
+  background: color-mix(in srgb, var(--cxa-canvas) 86%, transparent);
+}
+
+/* Shell de conteúdo (largura editorial) — usado dentro das seções full-bleed
+   pra centralizar texto/grid sem depender do .container global do site. */
+.cxa-shell {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+@media (min-width: 640px) {
+  .cxa-shell {
+    padding-inline: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cxa-shell {
+    padding-inline: 64px;
+  }
+}
+
+.cxa-vline {
+  border-left: 1px solid var(--cxa-hairline);
+}
+
+.cxa-headline {
+  font-family: var(--cxa-sans);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+/* Superfície padrão do app (card branco, raio 16-20, sombra suave) ---- */
+
+.cxa-card {
+  background: var(--cxa-paper);
+  border-radius: var(--cxa-radius);
+  box-shadow: var(--cxa-shadow);
+}
+
+/* Círculo padrão do app (igual à sidebar): 46px, branco, ícone cinza;
+   ativo = quase-preto com ícone branco. Sem borda. */
+
+.cxa-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: none;
+  background: var(--cxa-paper);
+  color: var(--cxa-icon);
+  box-shadow: var(--cxa-shadow);
+  transition:
+    background-color 180ms ease-out,
+    color 180ms ease-out,
+    transform 180ms ease-out;
+}
+
+.cxa-circle:hover {
+  color: var(--cxa-ink);
+  transform: translateY(-1px);
+}
+
+.cxa-circle[data-active="true"],
+.cxa-circle[aria-current="true"] {
+  background: var(--cxa-dark);
+  color: #ffffff;
+}
+
+.cxa-circle-label {
+  font-family: var(--cxa-sans);
+  font-size: 11.5px;
+  color: var(--cxa-ink-soft);
+}
+
+/* CTAs -------------------------------------------------------------- */
+
+.cxa-pill-gradient {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  font-family: var(--cxa-sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--cxa-ink);
+  background: var(--cxa-gradient);
+  box-shadow: var(--cxa-shadow);
+  transition:
+    transform 180ms ease-out,
+    box-shadow 180ms ease-out;
+}
+
+.cxa-pill-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--cxa-shadow-lift);
+}
+
+.cxa-pill-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.6rem;
+  font-family: var(--cxa-sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--cxa-ink);
+  border: 1px solid var(--cxa-hairline);
+  background: var(--cxa-paper);
+  transition:
+    border-color 180ms ease-out,
+    background-color 180ms ease-out,
+    transform 180ms ease-out;
+}
+
+.cxa-pill-outline:hover {
+  border-color: var(--cxa-ink);
+  transform: translateY(-2px);
+}
+
+/* Mosaico "Do it all" -------------------------------------------------
+   O <a> é a placa de cor do bloco; o miolo branco (.cxa-doit-inner) mora
+   em cima dela. No hover o miolo desliza e descobre uma faixa do acento do
+   lado oposto, ganhando elevação — o card sai do quadro por cima dos
+   vizinhos (daí o z-index).
+
+   A DIREÇÃO é por bloco, e vem de --doit-x/--doit-y no inline style: assim
+   o mosaico não repete o mesmo gesto seis vezes, e cada peça descobre o
+   acento pelo lado onde ela tem vizinho. */
+
+.cxa-doit {
+  position: relative;
+  background: var(--block-accent, var(--cxa-accent));
+}
+
+.cxa-doit-inner {
+  background: var(--cxa-paper);
+  border: 1px solid var(--cxa-hairline);
+  transform-origin: bottom right;
+  transition:
+    transform 500ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 1024px) {
+  .cxa-doit:hover {
+    z-index: 3;
+  }
+
+  .cxa-doit:hover .cxa-doit-inner,
+  .cxa-doit:focus-visible .cxa-doit-inner {
+    transform: translate(var(--doit-x, -40px), var(--doit-y, 0px));
+    box-shadow: var(--cxa-shadow-lift);
+  }
+}
+
+/* Os tiles cinza acendem na cor do bloco que está sob o ponteiro. A tinta
+   entra por uma camada própria, com opacidade: gradiente não interpola
+   para cor sólida, e sem a camada a troca seria um corte seco. */
+.cxa-filler {
+  position: relative;
+  overflow: hidden;
+}
+
+.cxa-filler::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--filler-accent, transparent);
+  opacity: 0;
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cxa-filler[data-aceso='true']::after {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cxa-filler::after {
+    transition: none;
+  }
+}
+
+/* Queda dos blocos ----------------------------------------------------
+   Cada peça carrega --i (posição visual, topo→base) e a seção carrega --n
+   (índice máximo). O delay é (n − i) × 60ms: o último índice — canto
+   inferior direito — começa em 0ms e a queda SOBE, base primeiro. A
+   aterrissagem tem squash & stretch a partir da borda de baixo, como se
+   o bloco batesse no chão. Dispara uma vez, quando a seção entra em cena
+   (.cxa-fall-in), e não acompanha a rolagem. */
+
+.cxa-fall {
+  opacity: 0;
+  transform: translateY(-100px);
+  transform-origin: center bottom;
+}
+
+.cxa-fall-in .cxa-fall {
+  animation: cxa-fall 500ms ease-in forwards;
+  animation-delay: calc((var(--n, 12) - var(--i, 0)) * 60ms);
+}
+
+@keyframes cxa-fall {
+  0% {
+    opacity: 0;
+    transform: translateY(-300px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(0) scaleY(0.95);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scaleY(1);
+  }
+}
+
+/* Losangos vazados: não caem, brotam no lugar (o rotate-45 do Tailwind v4
+   é a propriedade `rotate`, independente de `transform` — por isso a
+   keyframe pode usar scale sem desfazer o giro). */
+
+.cxa-fall-pop {
+  opacity: 0;
+}
+
+.cxa-fall-in .cxa-fall-pop {
+  animation: cxa-fall-pop 500ms ease-in backwards;
+  animation-delay: calc((var(--n, 12) - var(--i, 0)) * 60ms);
+}
+
+@keyframes cxa-fall-pop {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cxa-fall,
+  .cxa-fall-pop {
+    opacity: 1;
+    transform: none;
+    animation: none !important;
+  }
+}
+
+/* Blocos "Do it all" / benefícios — hover-shift ---------------------- */
+
+.cxa-tile {
+  border: 1px solid var(--cxa-hairline);
+  background: var(--cxa-paper);
+  box-shadow: var(--cxa-shadow);
+  transition:
+    transform 200ms ease-out,
+    background-color 200ms ease-out,
+    border-color 200ms ease-out,
+    box-shadow 200ms ease-out;
+}
+
+.cxa-tile:hover {
+  transform: translateY(-3px);
+  border-color: transparent;
+  box-shadow: var(--cxa-shadow-lift);
+}
+
+.cxa-tile[data-tint="1"]:hover {
+  background: color-mix(in srgb, var(--cxa-g1) 14%, var(--cxa-paper));
+}
+.cxa-tile[data-tint="2"]:hover {
+  background: color-mix(in srgb, var(--cxa-g2) 14%, var(--cxa-paper));
+}
+.cxa-tile[data-tint="3"]:hover {
+  background: color-mix(in srgb, var(--cxa-g3) 18%, var(--cxa-paper));
+}
+.cxa-tile[data-tint="4"]:hover {
+  background: color-mix(in srgb, var(--cxa-accent) 12%, var(--cxa-paper));
+}
+
+/* Cards de ângulo (ai-ecosystem) -------------------------------------- */
+
+.cxa-angle-card {
+  border: 1px solid var(--cxa-hairline);
+  background: var(--cxa-paper);
+  border-radius: var(--cxa-radius);
+  box-shadow: var(--cxa-shadow);
+  transition:
+    transform 200ms ease-out,
+    box-shadow 200ms ease-out;
+}
+
+.cxa-angle-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--cxa-shadow-lift);
+}
+
+/* Campo de blocos do hero (células lisas do degradê) ------------------ */
+
+.cxa-mosaic-tile {
+  aspect-ratio: 1 / 1;
+}
+
+.cxa-cellfield {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  align-content: start;
+}
+
+@media (min-width: 1024px) {
+  .cxa-cellfield {
+    gap: 8px;
+    grid-template-columns: repeat(auto-fill, minmax(92px, 1fr));
+  }
+}
+
+.cxa-cell {
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 8px;
+}
+
+.cxa-cell[data-neutral="1"] {
+  box-shadow: inset 0 0 0 1px var(--cxa-hairline);
+}
+
+.cxa-cell-label {
+  font-family: var(--cxa-sans);
+  font-size: 9.5px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  color: rgba(20, 23, 26, 0.72);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 1024px) {
+  .cxa-cell-label {
+    font-size: 9.5px;
+  }
+}
+
+/* Palavra destacada da frase-manifesto do hero: traço do degradê do app
+   por baixo do texto (o texto permanece ink, contraste cheio). */
+.cxa-hero-underline {
+  background-image: var(--cxa-gradient);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 92%;
+  padding-inline: 0.04em;
+}
+
+/* Marca "cx" do rodapé (grid de células, cor do acento) --------------- */
+
+.cxa-pixel-cx {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 3px;
+  width: 100%;
+  max-width: 480px;
+}
+
+.cxa-pixel-cx > span {
+  aspect-ratio: 1 / 1;
+  background: transparent;
+  border-radius: 2px;
+}
+
+.cxa-pixel-cx > span[data-on="1"] {
+  background: var(--cxa-accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cxa-tile,
+  .cxa-tile:hover,
+  .cxa-angle-card,
+  .cxa-angle-card:hover,
+  .cxa-circle,
+  .cxa-circle:hover,
+  .cxa-pill-outline,
+  .cxa-pill-outline:hover,
+  .cxa-pill-gradient,
+  .cxa-pill-gradient:hover {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Ghost button do app (pílula contornada) — usado nos cards do ecossistema
+   no lugar do antigo glifo "↗". */
+.cxa-ghost {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid var(--cxa-hairline);
+  background: var(--cxa-paper);
+  padding: 5px 13px;
+  font-family: var(--cxa-sans);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    border-color 180ms ease-out,
+    background-color 180ms ease-out;
+}
+
+.cxa-angle-card:hover .cxa-ghost {
+  border-color: var(--cxa-ink);
+  background: var(--cxa-subtle);
+}
+
+/* Painel lateral do Max: entra pela direita. A regra global de
+   prefers-reduced-motion já zera a duração, e o componente nem declara a
+   animação nesse modo. */
+@keyframes cxa-painel-entra {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+}
+
+/* Setinha que aponta para o botão de testar o Max.
+   Ela existe porque o cartão parece leitura, e não convite: sem um dedo
+   apontando, a pessoa lê a pergunta e rola a página sem apertar nada.
+
+   Cada volta entra por um ângulo diferente (o componente escreve --seta-giro),
+   então o olho não acostuma e para de ver. É movimento com trabalho: some no
+   instante em que o painel abre, e em prefers-reduced-motion ela nasce parada
+   apontando, sem laço nenhum. */
+@keyframes cxa-seta-aponta {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--seta-giro, 0deg)) translateX(-14px);
+  }
+  22%,
+  62% {
+    opacity: 1;
+    transform: rotate(var(--seta-giro, 0deg)) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--seta-giro, 0deg)) translateX(6px);
+  }
+}
+
+.cxa-seta {
+  transform: rotate(var(--seta-giro, 0deg));
+  animation: cxa-seta-aponta 1500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cxa-seta {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+/* As tags de exemplo entrando quando a janela gira. Só opacidade e deslocamento
+   vertical, que é o que o navegador anima sem recalcular layout. */
+@keyframes cxa-exemplo-entra {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+.cxa-exemplo {
+  animation: cxa-exemplo-entra 320ms cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+/* A resposta do Max chegando por partes -------------------------------
+   Cada bloco (saudação, número, cartão, sinal, CTA) entra sozinho, no
+   instante em que a sonda que o produziu termina. O deslocamento é curto
+   de propósito: o que precisa ficar claro é a ORDEM de chegada, e um salto
+   grande transformaria a leitura numa fila de coisas pulando.
+
+   Em prefers-reduced-motion o painel já abre com a resposta inteira pronta
+   e nenhum tempo roda, mas as regras abaixo continuam existindo porque a
+   preferência pode mudar com o painel aberto. */
+@keyframes cxa-revela {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.cxa-revela {
+  animation: cxa-revela 300ms cubic-bezier(0.2, 0.65, 0.3, 0.9) both;
+}
+
+/* O selo "Concluído" cresce ao trocar de "Buscando…": é o gesto que marca
+   que a sonda ENTREGOU, e sem ele a troca de cor passa despercebida. */
+@keyframes cxa-selo-conclui {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.cxa-selo-conclui {
+  animation: cxa-selo-conclui 220ms cubic-bezier(0.2, 0.65, 0.3, 0.9) both;
+}
+
+/* A bolinha do selo "Buscando…". Pulsa enquanto a sonda roda e some junto
+   com ela, então é movimento com prazo de validade, não enfeite eterno. */
+@keyframes cxa-pulsa {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.cxa-pulsa {
+  animation: cxa-pulsa 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cxa-revela,
+  .cxa-selo-conclui,
+  .cxa-pulsa {
+    animation: none;
+    opacity: 1;
+  }
+}
