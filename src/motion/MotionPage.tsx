@@ -27,7 +27,7 @@ export function MotionPage() {
   useEffect(() => {
     const prev = document.title
     document.title =
-      'Design Viral | Todos os motions que a IA pode fazer pelo seu site'
+      'Design Viral | Vários motions que a IA pode fazer pelo seu site'
     return () => {
       document.title = prev
     }

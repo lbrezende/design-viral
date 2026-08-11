@@ -29,7 +29,7 @@ export function MotionHero() {
         >
           <p className="cxa-eyebrow mb-4">Design Viral · UX Motion</p>
           <h1 className="cxa-headline mx-auto max-w-[820px] text-[38px] text-[var(--cxa-ink)] sm:text-[56px]">
-            Todos os <span className="cxa-hero-underline">motions</span> que a
+            Vários <span className="cxa-hero-underline">motions</span> que a
             IA pode fazer pelo seu site
           </h1>
           <p className="mx-auto mt-5 max-w-[560px] text-[15.5px] text-[var(--cxa-ink-soft)] leading-relaxed">
