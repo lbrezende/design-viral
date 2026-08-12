@@ -14,9 +14,10 @@ export function MotionNav() {
   return (
     <header className="cxa cxa-nav sticky top-0 z-50 border-[var(--cxa-hairline)] border-b backdrop-blur">
       <div className="cxa-shell flex h-16 items-center justify-between gap-4">
+        {/* Logo só no desktop — no mobile o espaço vira menu de 2 botões */}
         <Link
           to="/motion"
-          className="flex items-center gap-2"
+          className="hidden items-center gap-2 sm:flex"
           aria-label="Design Viral"
         >
           <span
@@ -29,6 +30,31 @@ export function MotionNav() {
             designviral
           </span>
         </Link>
+
+        {/* Mobile: dois botões no lugar do título */}
+        <div className="flex flex-1 items-center justify-center gap-2 sm:hidden">
+          <button
+            type="button"
+            onClick={() =>
+              gate(() => {
+                cxTrack('library_open', { origin: 'nav_mobile' })
+                window.location.assign('/motion/biblioteca')
+              }, 'library:nav-mobile')
+            }
+            className="cxa-pill-outline flex-1 justify-center !px-3 !py-2 whitespace-nowrap text-[12.5px]"
+          >
+            Biblioteca motion
+          </button>
+          <a
+            href={workshopUrl('nav-mobile')}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => cxTrack('workshop_click', { placement: 'nav-mobile' })}
+            className="cxa-pill-gradient flex-1 justify-center !px-3 !py-2 whitespace-nowrap text-[12.5px]"
+          >
+            Participe do workshop
+          </a>
+        </div>
 
         <nav className="hidden items-center gap-7 lg:flex">
           {LINKS.map(l => (
@@ -59,12 +85,38 @@ export function MotionNav() {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => cxTrack('workshop_click', { placement: 'nav' })}
-          className="cxa-pill-gradient !px-4 !py-2 shrink-0 whitespace-nowrap text-[12.5px]"
+          className="cxa-pill-gradient !hidden !px-4 !py-2 shrink-0 whitespace-nowrap text-[12.5px] sm:!inline-flex"
         >
           Participe do workshop
         </a>
       </div>
     </header>
+  )
+}
+
+/* Barra fixa no rodapé: sempre visível, largura toda, filete do degradê do
+   app no topo. Clicar passa pelo lead gate (nome/email/telefone → Clickmax)
+   e, com os dados deixados, entra direto na biblioteca. */
+export function LibraryBar() {
+  const { gate } = useLeadGate()
+  return (
+    <button
+      type="button"
+      onClick={() =>
+        gate(() => {
+          cxTrack('library_open', { origin: 'bottom_bar' })
+          window.location.assign('/motion/biblioteca')
+        }, 'library:bottom-bar')
+      }
+      className="fixed inset-x-0 bottom-0 z-[60] flex w-full items-center justify-center gap-2 py-3 font-semibold text-[13.5px] text-white"
+      style={{
+        background: 'var(--cxa-dark, #1a1a1a)',
+        borderTop: '2px solid transparent',
+        borderImage: 'var(--cxa-gradient) 1',
+      }}
+    >
+      Veja a biblioteca motion completa →
+    </button>
   )
 }
 

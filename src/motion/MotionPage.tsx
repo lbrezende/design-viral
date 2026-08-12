@@ -4,7 +4,6 @@ import { ClickmaxPixel } from '@/components/clickmax-pixel'
 import { AllHubFooter } from '@/sections/allhub/AllHubFooter'
 import { DarkBand } from '@/sections/allhub/all/DarkBand'
 import { DoItAll } from '@/sections/allhub/all/DoItAll'
-import { EcosystemGrid } from '@/sections/allhub/all/EcosystemGrid'
 import { FinalCta } from '@/sections/allhub/all/FinalCta'
 import { Hero } from '@/sections/allhub/all/Hero'
 import { LogosAndCases } from '@/sections/allhub/all/LogosAndCases'
@@ -13,7 +12,7 @@ import { ModuleShowcase } from '@/sections/allhub/all/ModuleShowcase'
 import { Partnership } from '@/sections/allhub/all/Partnership'
 import { CX_PAGE_SLUG, CX_PROJECT_SLUG } from './cx-config'
 import { LeadGateProvider } from './lead-gate'
-import { MotionNav, WorkshopBand } from './MotionNav'
+import { LibraryBar, MotionNav, WorkshopBand } from './MotionNav'
 import { MotionSection } from './motion-section'
 
 /* /motion — o clickmax.io/all duplicado virando playground de motion:
@@ -60,9 +59,6 @@ export function MotionPage() {
           <MotionSection name="Vitrine de módulos" defaultMotion="app-showcase">
             <ModuleShowcase lang="pt" />
           </MotionSection>
-          <MotionSection name="Grade do ecossistema" defaultMotion="grid-wipe">
-            <EcosystemGrid lang="pt" />
-          </MotionSection>
           <MotionSection name="Logos e cases" defaultMotion="crossfade">
             <LogosAndCases lang="pt" />
           </MotionSection>
@@ -78,9 +74,10 @@ export function MotionPage() {
         </div>
 
         <WorkshopBand placement="footer" />
-        <div className="cxa">
+        <div className="cxa pb-12">
           <AllHubFooter lang="pt" />
         </div>
+        <LibraryBar />
       </div>
     </LeadGateProvider>
   )
