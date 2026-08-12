@@ -204,7 +204,7 @@ function LeadPopup({
           Veja gratuitamente toda a biblioteca de animações.
         </h3>
         <p className="mb-5 text-[14px] text-[var(--cxa-ink-soft)] leading-relaxed">
-          Basta deixar seu nome, email e telefone — e todos os 42 motions, com
+          Basta deixar seu nome, email e telefone — e todos os 52 motions, com
           prompts prontos para copiar, ficam liberados.
         </p>
 

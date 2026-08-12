@@ -450,6 +450,61 @@ function CssMini({ id }: { id: string }) {
           </g>
         </svg>
       )
+    case 'slide-right':
+      return <div className="mv-slidebox mv-slidebox--r" />
+    case 'slide-left':
+      return <div className="mv-slidebox mv-slidebox--l" />
+    case 'slide-up':
+      return <div className="mv-slidebox mv-slidebox--u" />
+    case 'slide-down':
+      return <div className="mv-slidebox mv-slidebox--d" />
+    case 'zoom-in-out':
+      return <div className="mv-zoominout" />
+    case 'block-drop':
+      return (
+        <div className="mv-blockdrop">
+          {[3, 1, 2, 0].map((d, i) => (
+            <i key={`bd-${i}-${d}`} style={{ ['--d' as string]: d }} />
+          ))}
+        </div>
+      )
+    case 'hover-tint':
+      return (
+        <div className="mv-tintcard">
+          <i />
+          <i />
+        </div>
+      )
+    case 'sticky-top':
+      return (
+        <div className="mv-stickywrap">
+          <div className="bar" />
+          <div className="content">
+            {Array.from({ length: 9 }, (_, i) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: lista estática
+              <i key={i} />
+            ))}
+          </div>
+        </div>
+      )
+    case 'puzzle-shift':
+      return (
+        <div className="mv-puzzle">
+          {[0, 1, 2, 3].map(n => (
+            <span key={`pz-${n}`} className="pc">
+              <i />
+            </span>
+          ))}
+        </div>
+      )
+    case 'progressive-disclosure':
+      return (
+        <div className="mv-disclose">
+          {[0, 1, 2, 3].map(n => (
+            <i key={`pd-${n}`} style={{ ['--i' as string]: n }} />
+          ))}
+        </div>
+      )
     case 'hand-drawn':
       return (
         <svg viewBox="0 0 100 56" className="mv-doodle h-[75%] w-[80%]" fill="none">

@@ -531,3 +531,63 @@
 }
 .dv-phone .react-international-phone-input { width: 100%; border-radius: 0 12px 12px 0 !important }
 .dv-phone .react-international-phone-country-selector-button { border-radius: 12px 0 0 12px !important }
+
+/* ── novos motions: slides, zoom, interações do exemplo Clickmax ── */
+@keyframes mv-slide-r { 0%,12% { transform: translateX(-120%); opacity: 0 } 35%,75% { transform: none; opacity: 1 } 95%,100% { transform: translateX(-120%); opacity: 0 } }
+@keyframes mv-slide-l { 0%,12% { transform: translateX(120%); opacity: 0 } 35%,75% { transform: none; opacity: 1 } 95%,100% { transform: translateX(120%); opacity: 0 } }
+@keyframes mv-slide-u { 0%,12% { transform: translateY(120%); opacity: 0 } 35%,75% { transform: none; opacity: 1 } 95%,100% { transform: translateY(120%); opacity: 0 } }
+@keyframes mv-slide-d { 0%,12% { transform: translateY(-120%); opacity: 0 } 35%,75% { transform: none; opacity: 1 } 95%,100% { transform: translateY(-120%); opacity: 0 } }
+.mv-slidebox { position: absolute; inset: 24% 28%; border-radius: 8px; background: linear-gradient(135deg, #a78bfa, #6366f1) }
+.mv-slidebox--r { animation: mv-slide-r 3s cubic-bezier(.16,1,.3,1) infinite }
+.mv-slidebox--l { animation: mv-slide-l 3s cubic-bezier(.16,1,.3,1) infinite }
+.mv-slidebox--u { animation: mv-slide-u 3s cubic-bezier(.16,1,.3,1) infinite }
+.mv-slidebox--d { animation: mv-slide-d 3s cubic-bezier(.16,1,.3,1) infinite }
+
+@keyframes mv-zoominout { 0%,100% { transform: scale(0.8) } 50% { transform: scale(1.15) } }
+.mv-zoominout { width: 44%; aspect-ratio: 1.4; border-radius: 10px; background: linear-gradient(135deg, #c084fc, #7c3aed); animation: mv-zoominout 3.6s ease-in-out infinite }
+
+@keyframes mv-hover-tint {
+  0%, 18% { background: #ffffff; transform: translateY(0) }
+  30%, 70% { background: #d9f5ef; transform: translateY(-4px) }
+  85%, 100% { background: #ffffff; transform: translateY(0) }
+}
+.mv-tintcard { width: 52%; aspect-ratio: 1.6; border-radius: 10px; border: 1px solid #e6e8eb; animation: mv-hover-tint 3s ease infinite; display: flex; flex-direction: column; gap: 6px; padding: 10px }
+.mv-tintcard i { height: 7px; border-radius: 3px; background: #e6e8eb; width: 80% }
+.mv-tintcard i + i { width: 55% }
+
+@keyframes mv-sticky-scroll { 0%,15% { transform: translateY(0) } 80%,100% { transform: translateY(-58%) } }
+.mv-stickywrap { position: absolute; inset: 12% 24%; border-radius: 8px; background: #fff; overflow: hidden }
+.mv-stickywrap .bar { position: absolute; top: 0; left: 0; right: 0; height: 16%; background: #14171a; z-index: 2; border-radius: 8px 8px 0 0 }
+.mv-stickywrap .content { position: absolute; inset: 16% 10% auto; animation: mv-sticky-scroll 4s ease-in-out infinite alternate }
+.mv-stickywrap .content i { display: block; height: 8px; border-radius: 3px; background: #e6e8eb; margin-top: 8px }
+.mv-stickywrap .content i:nth-child(3n) { width: 60% }
+
+@keyframes mv-puzzle-a { 0%,20% { transform: none } 35%,60% { transform: translateX(-34%) } 75%,100% { transform: none } }
+@keyframes mv-puzzle-b { 0%,35% { transform: none } 50%,75% { transform: translateY(-34%) } 90%,100% { transform: none } }
+.mv-puzzle { position: absolute; inset: 18% 26%; display: grid; grid-template-columns: 1fr 1fr; gap: 5px }
+.mv-puzzle .pc { position: relative; border-radius: 6px; overflow: hidden }
+.mv-puzzle .pc i { position: absolute; inset: 0; background: #f1f3f5; border: 1px solid #e6e8eb; border-radius: 6px }
+.mv-puzzle .pc:nth-child(1) { background: #5cd3c4 } .mv-puzzle .pc:nth-child(1) i { animation: mv-puzzle-a 4s cubic-bezier(.4,0,.2,1) infinite }
+.mv-puzzle .pc:nth-child(2) { background: #8be07a }
+.mv-puzzle .pc:nth-child(3) { background: #c8f244 }
+.mv-puzzle .pc:nth-child(4) { background: #5cd3c4 } .mv-puzzle .pc:nth-child(4) i { animation: mv-puzzle-b 4s 1s cubic-bezier(.4,0,.2,1) infinite }
+
+@keyframes mv-disclose { 0%,8% { opacity: 0; transform: translateY(8px) } 22%,78% { opacity: 1; transform: none } 92%,100% { opacity: 0; transform: translateY(8px) } }
+.mv-disclose { display: flex; flex-direction: column; gap: 7px; width: 60% }
+.mv-disclose i { height: 9px; border-radius: 4px; background: #34d399; animation: mv-disclose 4.4s ease infinite; animation-delay: calc(var(--i) * 500ms) }
+.mv-disclose i:nth-child(2) { width: 85%; background: #6ee7ff }
+.mv-disclose i:nth-child(3) { width: 70%; background: #c084fc }
+.mv-disclose i:nth-child(4) { width: 50%; background: #fbbf24 }
+
+@keyframes mv-blockdrop {
+  0%, 8% { opacity: 0; transform: translateY(-90px) }
+  30% { opacity: 1; transform: translateY(0) scaleY(1) }
+  38% { transform: scaleY(0.92) }
+  46% { transform: scaleY(1.04) }
+  54%, 78% { transform: scaleY(1) }
+  92%, 100% { opacity: 0; transform: translateY(-90px) }
+}
+.mv-blockdrop { position: absolute; inset: 20% 24%; display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; align-items: end }
+.mv-blockdrop i { height: 100%; border-radius: 4px; background: #8be07a; transform-origin: center bottom; animation: mv-blockdrop 3.6s ease-in infinite; animation-delay: calc(var(--d) * 90ms) }
+.mv-blockdrop i:nth-child(odd) { background: #5cd3c4 }
+.mv-blockdrop i:nth-child(3n) { background: #c8f244 }

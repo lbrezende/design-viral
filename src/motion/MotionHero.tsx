@@ -12,7 +12,7 @@ import { MotionPreview } from './previews'
 
 /* Headline do /motion na linguagem CX App Light do hub duplicado: canvas
    cinza-claro degradê, headline ink com o sublinhado no degradê do app,
-   pílulas de CTA e os 42 motions como "mini-telas" escuras dentro de cards
+   pílulas de CTA e os 52 motions como "mini-telas" escuras dentro de cards
    brancos com hairline — cada tile abre a biblioteca com o prompt. */
 
 export function MotionHero() {
@@ -33,7 +33,7 @@ export function MotionHero() {
             IA pode fazer pelo seu site
           </h1>
           <p className="mx-auto mt-5 max-w-[560px] text-[15.5px] text-[var(--cxa-ink-soft)] leading-relaxed">
-            42 tipos de animação, cada um com o prompt pronto para vibe codar.
+            52 tipos de animação, cada um com o prompt pronto para vibe codar.
             Esta página inteira é o playground: veja o motion de cada bloco e
             troque ao vivo para ver como fica.
           </p>
@@ -79,7 +79,7 @@ export function MotionHero() {
           </div>
         </motion.div>
 
-        {/* grid dos 42: mini-telas escuras em cards brancos do app */}
+        {/* grid dos 52: mini-telas escuras em cards brancos do app */}
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5 lg:gap-4">
           {MOTIONS.map((m, i) => (
             <motion.button
@@ -113,7 +113,7 @@ export function MotionHero() {
         </div>
 
         <p className="mt-7 text-center text-[13px] text-[var(--cxa-ink-soft)]">
-          42 tipos. Um prompt para cada. Clique em qualquer um para pegar o
+          52 tipos. Um prompt para cada. Clique em qualquer um para pegar o
           código e usar no seu projeto.{' '}
           <Link
             to="/motion/biblioteca"

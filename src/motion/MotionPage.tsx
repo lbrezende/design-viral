@@ -1,6 +1,5 @@
 import '@/styles/all-hub.css'
 import { useEffect } from 'react'
-import { ClickmaxPixel } from '@/components/clickmax-pixel'
 import { AllHubFooter } from '@/sections/allhub/AllHubFooter'
 import { DarkBand } from '@/sections/allhub/all/DarkBand'
 import { DoItAll } from '@/sections/allhub/all/DoItAll'
@@ -10,7 +9,6 @@ import { LogosAndCases } from '@/sections/allhub/all/LogosAndCases'
 import { MaxDemo } from '@/sections/allhub/all/MaxDemo'
 import { ModuleShowcase } from '@/sections/allhub/all/ModuleShowcase'
 import { Partnership } from '@/sections/allhub/all/Partnership'
-import { CX_PAGE_SLUG, CX_PROJECT_SLUG } from './cx-config'
 import { LeadGateProvider } from './lead-gate'
 import { LibraryBar, MotionNav, WorkshopBand } from './MotionNav'
 import { MotionSection } from './motion-section'
@@ -33,7 +31,7 @@ export function MotionPage() {
 
   return (
     <LeadGateProvider>
-      <ClickmaxPixel projectSlug={CX_PROJECT_SLUG} pageSlug={CX_PAGE_SLUG} />
+      {/* Pixel do Clickmax: snippet oficial do funil no <head> (index.html) */}
       <div className="cxa min-h-screen">
         <MotionNav />
 

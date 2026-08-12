@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useMemo, useState } from 'react'
 import '@/styles/all-hub.css'
-import { ClickmaxPixel } from '@/components/clickmax-pixel'
 import {
   CATEGORIES,
   CATEGORY_COLORS,
@@ -11,7 +10,6 @@ import {
   type MotionCategory,
   type MotionDef,
 } from './catalog'
-import { CX_PAGE_SLUG, CX_PROJECT_SLUG } from './cx-config'
 import { cxTrack, LeadGateProvider, useLeadGate } from './lead-gate'
 import { MotionNav, WorkshopBand } from './MotionNav'
 import { MotionPreview } from './previews'
@@ -147,7 +145,7 @@ export function LibraryPage() {
 
   return (
     <LeadGateProvider>
-      <ClickmaxPixel projectSlug={CX_PROJECT_SLUG} pageSlug={CX_PAGE_SLUG} />
+      {/* Pixel do Clickmax: snippet oficial do funil no <head> (index.html) */}
       <div className="cxa min-h-screen">
         <MotionNav />
 
@@ -159,7 +157,7 @@ export function LibraryPage() {
               <span className="cxa-hero-underline">motions</span>
             </h1>
             <p className="mx-auto mt-4 max-w-[520px] text-[14.5px] text-[var(--cxa-ink-soft)] leading-relaxed">
-              42 tipos, cada um com prompt e código de exemplo. Filtre por
+              52 tipos, cada um com prompt e código de exemplo. Filtre por
               categoria e clique para copiar e vibe codar.
             </p>
           </div>

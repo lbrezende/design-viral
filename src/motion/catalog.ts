@@ -619,6 +619,160 @@ if (n < uThreshold + 0.02)
   </animateMotion>
 </circle>`,
   },
+  /* ── SLIDES & ZOOM (transições básicas que todo site precisa) ── */
+  {
+    id: 'slide-right',
+    name: 'Slide right',
+    category: 'transitions',
+    desc: 'Conteúdo desliza da esquerda para a direita ao entrar.',
+    prompt:
+      'Anime a entrada de um bloco com slide right: o elemento parte de -60px no eixo X com opacity 0 e desliza até a posição final em 600ms com cubic-bezier(0.16,1,0.3,1), disparado quando entra no viewport (IntersectionObserver ou whileInView).',
+    code: `<motion.div
+  initial={{ x: -60, opacity: 0 }}
+  whileInView={{ x: 0, opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+/>`,
+  },
+  {
+    id: 'slide-left',
+    name: 'Slide left',
+    category: 'transitions',
+    desc: 'Conteúdo desliza da direita para a esquerda ao entrar.',
+    prompt:
+      'Anime a entrada de um bloco com slide left: o elemento parte de +60px no eixo X com opacity 0 e desliza até a posição final em 600ms com cubic-bezier(0.16,1,0.3,1). Use para colunas da direita e imagens laterais.',
+    code: `<motion.div
+  initial={{ x: 60, opacity: 0 }}
+  whileInView={{ x: 0, opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+/>`,
+  },
+  {
+    id: 'slide-up',
+    name: 'Slide up',
+    category: 'transitions',
+    desc: 'Conteúdo sobe suavemente ao entrar na tela.',
+    prompt:
+      'Anime a entrada de um bloco com slide up: o elemento parte de +48px no eixo Y com opacity 0 e sobe até a posição final em 600ms com cubic-bezier(0.16,1,0.3,1), com stagger de 80ms entre elementos irmãos. É o padrão mais seguro de entrada de seção.',
+    code: `<motion.div
+  initial={{ y: 48, opacity: 0 }}
+  whileInView={{ y: 0, opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+/>`,
+  },
+  {
+    id: 'slide-down',
+    name: 'Slide down',
+    category: 'transitions',
+    desc: 'Conteúdo desce de cima, como um dropdown abrindo.',
+    prompt:
+      'Anime a entrada de um bloco com slide down: o elemento parte de -48px no eixo Y com opacity 0 e desce até a posição final em 600ms cubic-bezier(0.16,1,0.3,1). Bom para headers, banners e menus que “caem” na tela.',
+    code: `<motion.div
+  initial={{ y: -48, opacity: 0 }}
+  whileInView={{ y: 0, opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+/>`,
+  },
+  {
+    id: 'zoom-in-out',
+    name: 'Zoom in/out',
+    category: 'transitions',
+    desc: 'Elemento aproxima e afasta em respiração contínua.',
+    prompt:
+      'Crie um zoom in/out: entrada com scale 0.9→1 (zoom in, 500ms ease-out) e, para mídia de fundo, um loop lento de respiração scale 1→1.06→1 em 12s ease-in-out infinite (efeito Ken Burns). No hover, zoom in rápido de 1→1.04 em 200ms.',
+    code: `.media img {
+  animation: breathe 12s ease-in-out infinite;
+}
+@keyframes breathe {
+  50% { transform: scale(1.06) }
+}`,
+  },
+  {
+    id: 'block-drop',
+    name: 'Block drop',
+    category: 'transitions',
+    desc: 'Blocos caem do alto e aterrissam com squash & stretch.',
+    prompt:
+      'Recrie a queda de blocos do hero do Clickmax: cada peça de uma grade cai de -300px com delay proporcional à posição ((n - i) × 60ms, base primeiro), e aterrissa com squash & stretch — scaleY 1 → 0.95 → 1.02 → 1 a partir da borda inferior (transform-origin: center bottom). Dispara uma vez quando a seção entra em cena.',
+    code: `.fall {
+  animation: drop 500ms ease-in forwards;
+  animation-delay: calc((var(--n) - var(--i)) * 60ms);
+  transform-origin: center bottom;
+}
+@keyframes drop {
+  0% { opacity: 0; transform: translateY(-300px) }
+  50% { opacity: 1; transform: translateY(0) scaleY(1) }
+  65% { transform: scaleY(0.95) }
+  80% { transform: scaleY(1.02) }
+  100% { transform: scaleY(1) }
+}`,
+  },
+
+  /* ── INTERAÇÕES DO EXEMPLO CLICKMAX ── */
+  {
+    id: 'hover-tint',
+    name: 'Hover tint',
+    category: 'interface',
+    desc: 'Cards mudam de cor suavemente sob o cursor.',
+    prompt:
+      'Implemente hover tint como nos cards do Clickmax: no hover, o fundo do card interpola do branco para um tom da marca com color-mix (ex.: color-mix(in srgb, var(--accent) 14%, white)), com transition de 200ms, translateY(-3px) e sombra elevada. Cada card pode ter um tom diferente via data-attribute.',
+    code: `.tile { transition: all 200ms ease-out }
+.tile:hover {
+  transform: translateY(-3px);
+  background: color-mix(in srgb, var(--accent) 14%, #fff);
+  box-shadow: var(--shadow-lift);
+}`,
+  },
+  {
+    id: 'sticky-top',
+    name: 'Stick to top',
+    category: 'interface',
+    desc: 'Elemento gruda no topo enquanto a página rola.',
+    prompt:
+      'Crie um stick to top: um header/elemento com position: sticky; top: 0 que gruda no topo ao rolar. Quando “grudado” (detecte com IntersectionObserver numa sentinela acima dele), adicione fundo translúcido com backdrop-blur, hairline inferior e encolha o padding com transition de 250ms.',
+    code: `.bar { position: sticky; top: 0; transition: all 250ms }
+.bar[data-stuck='true'] {
+  backdrop-filter: blur(8px);
+  background: rgb(255 255 255 / .85);
+  border-bottom: 1px solid #e6e8eb;
+  padding-block: 8px;
+}`,
+  },
+  {
+    id: 'puzzle-shift',
+    name: 'Puzzle shift',
+    category: 'interface',
+    desc: 'Peças do mosaico deslizam revelando a cor por baixo.',
+    prompt:
+      'Recrie o mosaico “puzzle” do Clickmax: cada peça é uma placa de cor com um miolo branco por cima; no hover, o miolo desliza na direção do vizinho (translate de --shift-x/--shift-y definidos por peça, 500ms cubic-bezier(0.4,0,0.2,1)) e descobre uma faixa da cor de acento por baixo, ganhando elevação e z-index sobre as peças ao lado.',
+    code: `.piece { background: var(--accent); position: relative }
+.piece .inner {
+  background: #fff;
+  transition: transform 500ms cubic-bezier(.4,0,.2,1);
+}
+.piece:hover .inner {
+  transform: translate(var(--shift-x, -40px), var(--shift-y, 0));
+  box-shadow: var(--shadow-lift);
+}`,
+  },
+  {
+    id: 'progressive-disclosure',
+    name: 'Progressive disclosure',
+    category: 'interface',
+    desc: 'A informação se revela por partes, na ordem certa.',
+    prompt:
+      'Implemente progressive disclosure: o conteúdo chega por partes na ordem de leitura — cada bloco (saudação, número, cartão, CTA) entra sozinho com opacity 0→1 e translateY(8px)→0 em 300ms, um após o outro (delay incremental ou disparado quando o dado anterior fica pronto). O deslocamento é curto de propósito: o que importa é a ORDEM de chegada.',
+    code: `.revela {
+  animation: chega 300ms cubic-bezier(.2,.65,.3,.9) both;
+  animation-delay: calc(var(--i) * 350ms);
+}
+@keyframes chega {
+  from { opacity: 0; transform: translateY(8px) }
+}`,
+  },
   {
     id: 'hand-drawn',
     name: 'Hand-drawn',

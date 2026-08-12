@@ -533,6 +533,36 @@ const STAGE_FX: Record<string, StageFx> = {
     exit: { scale: 1 },
     duration: 0.12,
   },
+  'slide-right': {
+    initial: { x: -80, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: 80, opacity: 0 },
+    duration: 0.6,
+  },
+  'slide-left': {
+    initial: { x: 80, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    exit: { x: -80, opacity: 0 },
+    duration: 0.6,
+  },
+  'slide-up': {
+    initial: { y: 64, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    exit: { y: -64, opacity: 0 },
+    duration: 0.6,
+  },
+  'slide-down': {
+    initial: { y: -64, opacity: 0 },
+    animate: { y: 0, opacity: 1 },
+    exit: { y: 64, opacity: 0 },
+    duration: 0.6,
+  },
+  'zoom-in-out': {
+    initial: { scale: 0.85, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    exit: { scale: 1.12, opacity: 0 },
+    duration: 0.55,
+  },
 }
 
 function TransitionFold({ id }: { id: string }) {
@@ -1232,6 +1262,170 @@ function HandDrawnFold() {
   )
 }
 
+/* ── INTERAÇÕES DO EXEMPLO CLICKMAX ── */
+
+function BlockDropFold() {
+  const key = useLoopKey(4200)
+  const n = 12
+  return (
+    <div key={key} className="mx-auto grid max-w-[680px] grid-cols-6 items-end gap-2">
+      {Array.from({ length: n }, (_, i) => (
+        <i
+          // biome-ignore lint/suspicious/noArrayIndexKey: grade estática
+          key={i}
+          className="block rounded-lg"
+          style={{
+            aspectRatio: '1',
+            background: ['var(--cxa-g1)', 'var(--cxa-g2)', 'var(--cxa-g3)'][i % 3],
+            transformOrigin: 'center bottom',
+            opacity: 0,
+            animation: 'cxa-fall 500ms ease-in forwards',
+            animationDelay: `${(n - 1 - i) * 60}ms`,
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function HoverTintFold() {
+  const tints = ['var(--cxa-g1)', 'var(--cxa-g2)', 'var(--cxa-g3)']
+  return (
+    <div className="grid gap-4 sm:grid-cols-3">
+      {tints.map((c, i) => (
+        <div
+          key={c}
+          className="cxa-tile rounded-[var(--cxa-radius)] p-6"
+          style={{ ['--tint' as string]: c }}
+          onMouseEnter={e => {
+            e.currentTarget.style.background = `color-mix(in srgb, ${c} 16%, white)`
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.background = ''
+          }}
+        >
+          <p className="font-semibold text-[15px]" style={{ color: INK }}>
+            Passe o mouse aqui
+          </p>
+          <p className="mt-1 text-[12.5px]" style={{ color: SOFT }}>
+            O card {i + 1} acende no tom {i + 1} da marca, sobe 3px e ganha
+            sombra — sem JavaScript, só transition.
+          </p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function StickyTopFold() {
+  const [stuck, setStuck] = useState(false)
+  return (
+    <Card className="mx-auto max-w-[560px]">
+      <div
+        className="h-[300px] overflow-y-auto"
+        onScroll={e => setStuck(e.currentTarget.scrollTop > 8)}
+      >
+        <div className="px-5 pt-4 pb-2 text-[12px]" style={{ color: SOFT }}>
+          ↓ role este cartão
+        </div>
+        <div
+          className="sticky top-0 z-10 border-[var(--cxa-hairline)] border-b px-5 transition-all duration-300"
+          style={{
+            background: stuck ? 'rgba(255,255,255,.86)' : 'var(--cxa-paper)',
+            backdropFilter: stuck ? 'blur(8px)' : 'none',
+            paddingBlock: stuck ? 8 : 16,
+          }}
+        >
+          <p className="font-semibold text-[14px]" style={{ color: INK }}>
+            Este header gruda no topo {stuck ? '· grudado ✓' : ''}
+          </p>
+        </div>
+        <div className="flex flex-col gap-3 p-5">
+          {Array.from({ length: 12 }, (_, i) => (
+            <div
+              // biome-ignore lint/suspicious/noArrayIndexKey: lista estática
+              key={i}
+              className="h-[14px] rounded bg-[var(--cxa-subtle)]"
+              style={{ width: `${90 - (i % 4) * 15}%` }}
+            />
+          ))}
+        </div>
+      </div>
+    </Card>
+  )
+}
+
+function PuzzleShiftFold() {
+  const pieces = [
+    { c: 'var(--cxa-g1)', x: -44, y: 0 },
+    { c: 'var(--cxa-g2)', x: 44, y: 0 },
+    { c: 'var(--cxa-g3)', x: 0, y: -44 },
+    { c: 'var(--cxa-accent)', x: 0, y: 44 },
+  ]
+  return (
+    <div className="mx-auto grid max-w-[560px] grid-cols-2 gap-3">
+      {pieces.map(p => (
+        <div
+          key={p.c + String(p.x)}
+          className="group relative overflow-visible rounded-[var(--cxa-radius-sm)]"
+          style={{ background: p.c, aspectRatio: '1.7' }}
+        >
+          <div
+            className="absolute inset-0 flex items-center justify-center rounded-[var(--cxa-radius-sm)] border border-[var(--cxa-hairline)] bg-[var(--cxa-paper)] transition-transform duration-500 group-hover:shadow-[var(--cxa-shadow-lift)]"
+            style={{
+              transitionTimingFunction: 'cubic-bezier(0.4, 0, 0.2, 1)',
+            }}
+            onMouseEnter={e => {
+              e.currentTarget.style.transform = `translate(${p.x}px, ${p.y}px)`
+              e.currentTarget.style.zIndex = '3'
+            }}
+            onMouseLeave={e => {
+              e.currentTarget.style.transform = ''
+              e.currentTarget.style.zIndex = ''
+            }}
+          >
+            <p className="text-[13px]" style={{ color: SOFT }}>
+              passe o mouse
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function DisclosureFold() {
+  const key = useLoopKey(5200)
+  const parts = [
+    { t: 'Olá! Analisei sua semana.', w: '60%' },
+    { t: 'R$ 12.400 parados em 8 conversas sem resposta.', w: '85%' },
+    { t: 'As 3 mais quentes estão priorizadas no seu pipeline.', w: '75%' },
+    { t: 'Quer que eu mande os follow-ups agora?', w: '65%' },
+  ]
+  return (
+    <Card key={key} className="mx-auto max-w-[560px] p-6">
+      <p className="cxa-eyebrow mb-4">A resposta chega por partes, na ordem</p>
+      <div className="flex flex-col gap-3">
+        {parts.map((p, i) => (
+          <div
+            key={p.t}
+            className="rounded-xl bg-[var(--cxa-subtle)] px-4 py-3 text-[13.5px]"
+            style={{
+              color: INK,
+              maxWidth: p.w,
+              opacity: 0,
+              animation: 'cxa-revela 300ms cubic-bezier(0.2,0.65,0.3,0.9) forwards',
+              animationDelay: `${400 + i * 600}ms`,
+            }}
+          >
+            {p.t}
+          </div>
+        ))}
+      </div>
+    </Card>
+  )
+}
+
 /* ── dispatcher ── */
 
 function DemoContent({ id }: { id: string }) {
@@ -1296,6 +1490,16 @@ function DemoContent({ id }: { id: string }) {
       return <MapRouteFold />
     case 'hand-drawn':
       return <HandDrawnFold />
+    case 'block-drop':
+      return <BlockDropFold />
+    case 'hover-tint':
+      return <HoverTintFold />
+    case 'sticky-top':
+      return <StickyTopFold />
+    case 'puzzle-shift':
+      return <PuzzleShiftFold />
+    case 'progressive-disclosure':
+      return <DisclosureFold />
     default:
       return <TransitionFold id={id} />
   }
